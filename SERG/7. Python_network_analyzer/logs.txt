@@ -1,0 +1,3 @@
+[ALERT 2025-09-14 14:32:10] SYN flood suspected: 2100 SYNs in last 20s from 1 sources
+[ALERT 2025-09-14 14:33:05] ARP conflict: IP 10.0.0.10 seen with multiple MACs: {'02:aa:bb:cc:01:02', '02:aa:bb:cc:03:04'}
+[ALERT 2025-09-14 14:35:10] DHCP starvation suspected: 320 DHCP messages, unique MACs 120
