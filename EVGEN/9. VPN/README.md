@@ -20,37 +20,37 @@
 
 ```bash
 #!/bin/sh
- 
+
 # === 1. Создание пользователя webmaster ===
 WEBMASTER_PASS="*************"
 USERNAME="webmaster"
- 
+
 # Создать пользователя с оболочкой bash
 useradd -m -s /bin/bash "$USERNAME"
 echo "$USERNAME:$WEBMASTER_PASS" | chpasswd
- 
+
 # Добавить пользователя в sudo
 usermod -aG sudo "$USERNAME"
- 
+
 # === 2. Настройка SSH ===
 SSHD_CONFIG="/etc/ssh/sshd_config"
- 
+
 # Изменение порта SSH, запрет root-входа и аутентификации по паролю
 sed -i 's/^#Port 22/Port ***/' "$SSHD_CONFIG"
 sed -i -E 's/^#?PermitRootLogin\s+.+/PermitRootLogin no/' "$SSHD_CONFIG"
 sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication no/' "$SSHD_CONFIG"
- 
+
 # Перезапуск SSH с использованием сокета
 sudo systemctl daemon-reload
 sudo systemctl restart ssh.socket
- 
+
 # === 3. Настройка UFW ===
 ufw default deny incoming
 ufw default allow outgoing
 ufw allow ***/tcp
 ufw allow 5555/udp
 ufw enable
- 
+
 # Вывести сообщение о завершении
 echo "Первичная настройка завершена! Пользователь $USERNAME создан, оболочка Bash установлена, SSH настроен на порт 250, UFW включён."
 ```
@@ -192,7 +192,7 @@ sudo python vpn_client.py
 Теперь можно выполнить пинг. На **клиенте** выполняем:
 
 ```bash
-serg@serg-pc:~$ ping 10.0.0.1
+evgeny@home-pc:~$ ping 10.0.0.1
 PING 10.0.0.1 (10.0.0.1) 56(84) bytes of data.
 64 bytes from 10.0.0.1: icmp_seq=1 ttl=64 time=19.0 ms
 64 bytes from 10.0.0.1: icmp_seq=2 ttl=64 time=13.9 ms
