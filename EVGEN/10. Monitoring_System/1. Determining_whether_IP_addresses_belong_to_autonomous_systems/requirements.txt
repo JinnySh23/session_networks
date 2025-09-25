@@ -1,0 +1,3 @@
+ipwhois
+requests
+python-whois
